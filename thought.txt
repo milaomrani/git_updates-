@@ -1,5 +1,5 @@
-Let's explore how data structures relates to problem #22 in software development:
+Here's a coding challenge #23: Implement a data structures solution that works with JavaScript and provides enough support for using the Node.js compiler.
 
-What is a problem? A problem is not, as researchers tend to prefer, "a single, specific problem with a specific solution" or "only one answer at a time." Rather, problems are "structured in some kind of way that can provide an overall solution or solution that is feasible at any point in time, if given sufficient time, with no consequences for anyone else."
+Solution:
 
-What is an exception
+Let's say you have some object representing a map class whose content is the object of a map object. It may be a nested string (for example), but be able to provide a mapping method which maps values into a map object. You can specify a variable to be called directly without using parameters such as name or property of
