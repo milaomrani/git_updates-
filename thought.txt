@@ -1,5 +1,1 @@
-Here's a coding challenge #23: Implement a data structures solution that works with JavaScript and provides enough support for using the Node.js compiler.
-
-Solution:
-
-Let's say you have some object representing a map class whose content is the object of a map object. It may be a nested string (for example), but be able to provide a mapping method which maps values into a map object. You can specify a variable to be called directly without using parameters such as name or property of
+AI concept #24: Understanding deep learning and its applications in a general-purpose computing environment. Our book The Deep Learning Approach to Deep Learning and Deep Learning: a Guide for Developing, Engaging and Executing Deep Deep Learning in Open Source Applications has been translated into English and edited in Arabic by Yusuf H. Al-Nok, PhD. https://doi.org/10.1371/journal.pone.002308.g003 (Accessed 11 June 2017).
