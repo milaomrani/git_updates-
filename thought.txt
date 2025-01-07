@@ -1,5 +1,9 @@
-Here's a coding challenge #25: Implement a software design solution that supports Windows, OS X and Linux. Implement the code in your toolchain (see above) before creating a target client. (See #3340 for a good primer.)
+AI concept #26: Understanding coding patterns and its applications in Python 2.7
 
-Finally, write the program. Build the target client into the source C++/C#/JIT in order to save the source code into another source file so people can use it instead of using code from the source!
+#26: Understanding coding patterns and its applications in Python 2.7 #263: Working with Python modules for debugging Python 3.8 - 3.9
 
-Let's
+Running with Python 3.8
+
+The latest official release is currently available for download.
+
+There are also a number of python packages which should be available quickly from Python. You can also run them as per the documentation. However, you
