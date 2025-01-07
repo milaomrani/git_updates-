@@ -98,19 +98,32 @@ def generate_daily_schedule():
     num_runs = random.randint(5, 15)  # 5-15 runs per day
     schedule = []
     
+    # Get current hour and minute
+    now = datetime.now()
+    current_minutes = now.hour * 60 + now.minute
+    
     # Business hours in minutes (9 AM to 5 PM)
     start_minutes = 9 * 60
     end_minutes = 17 * 60
     window = end_minutes - start_minutes
     
-    # Calculate intervals
-    intervals = window // num_runs
+    # Adjust start time if current time is within business hours
+    if current_minutes > start_minutes and current_minutes < end_minutes:
+        start_minutes = current_minutes
+    
+    # Calculate remaining time window
+    remaining_window = end_minutes - start_minutes
+    if remaining_window <= 0:
+        return []  # Return empty schedule if no time left today
+        
+    # Calculate intervals for remaining time
+    intervals = remaining_window // num_runs
     
     for i in range(num_runs):
         # Base time plus random offset within interval
         base_time = start_minutes + (i * intervals)
-        random_offset = random.randint(0, intervals-1)
-        time_minutes = base_time + random_offset
+        random_offset = random.randint(0, min(intervals-1, end_minutes-base_time))
+        time_minutes = min(base_time + random_offset, end_minutes)
         
         hour = time_minutes // 60
         minute = time_minutes % 60
