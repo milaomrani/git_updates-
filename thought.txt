@@ -1,1 +1,5 @@
-AI concept #24: Understanding deep learning and its applications in a general-purpose computing environment. Our book The Deep Learning Approach to Deep Learning and Deep Learning: a Guide for Developing, Engaging and Executing Deep Deep Learning in Open Source Applications has been translated into English and edited in Arabic by Yusuf H. Al-Nok, PhD. https://doi.org/10.1371/journal.pone.002308.g003 (Accessed 11 June 2017).
+Here's a coding challenge #25: Implement a software design solution that supports Windows, OS X and Linux. Implement the code in your toolchain (see above) before creating a target client. (See #3340 for a good primer.)
+
+Finally, write the program. Build the target client into the source C++/C#/JIT in order to save the source code into another source file so people can use it instead of using code from the source!
+
+Let's
