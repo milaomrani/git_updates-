@@ -1,9 +1,5 @@
-Let's explore how data structures relates to problem #21 in software development:
+Let's explore how data structures relates to problem #22 in software development:
 
-What Is Data Structure
+What is a problem? A problem is not, as researchers tend to prefer, "a single, specific problem with a specific solution" or "only one answer at a time." Rather, problems are "structured in some kind of way that can provide an overall solution or solution that is feasible at any point in time, if given sufficient time, with no consequences for anyone else."
 
-Data can be structured like any other programming language, and as programming languages become more powerful, they have become much more difficult to write.
-
-I have been doing programming projects with data structure for years. We have seen an explosion in the amount of developers working on data structures for every project they've ever worked on.
-
-In fact, it was back in 2009 that data
+What is an exception
