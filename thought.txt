@@ -1,13 +1,19 @@
-Let's explore how software design relates to problem #34 in software development:
+Let's explore how software design relates to problem #35 in software development:
 
-Why use software design, especially when you could improve it?
+Design software to drive the success of a strategy A
 
-The number one reason to use software design is, essentially:
+1) Building a better business
 
-"software design is a necessary, or at best, a negative to achieving perfection"
+Design software to drive the success of a strategy B
 
-"you will see many programmers using software design to achieve only a mediocre job/model"
+Design software to drive the success of a strategy C
 
-"software development must begin, in a small group of professionals"
+1) Finding the right teams A
 
-The
+1) Building the team A
+
+1) Finding the right teams B
+
+4) Using the best tools A
+
+Design software to drive
