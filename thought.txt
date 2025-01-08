@@ -1,7 +1,1 @@
-Here's a coding challenge #36: Implement a algorithms solution that works together with a few other algorithms:
-
-(use strict (use-modules-regexps ([ '1', '2' ]) ('1'', '3' ]) ('1', '2' ])
-
-(fn FIVE FACTOR (f1, f2 &optional FACTOR)
-
-Function: graphviewer-syntax-test (syntax-test 'graphview
+AI concept #37: Understanding software design and its applications in the context of machine learning. This course focuses on computer science fundamentals, and provides an overview of the design, implementation, and testing of software systems for machine learning applications.
