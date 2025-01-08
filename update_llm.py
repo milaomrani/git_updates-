@@ -132,27 +132,31 @@ def generate_daily_schedule():
     return sorted(schedule)
 
 def update_cron_with_random_times():
-    schedule = generate_daily_schedule()
+    # Generate times for today
+    schedule_today = generate_daily_schedule()  # Adjust function to limit times to remaining hours today
+    
+    # Generate times for tomorrow
+    schedule_tomorrow = generate_daily_schedule()  # Existing logic for an entire day
+    
+    combined_schedule = schedule_today + schedule_tomorrow
+    
     cron_file = "/tmp/crontab.tmp"
     script_path = os.path.abspath(__file__)
     
-    # Get existing crontab
     os.system(f"crontab -l > {cron_file}")
-    
     with open(cron_file, "r") as file:
         lines = [l for l in file.readlines() if "update_llm.py" not in l]
     
     with open(cron_file, "w") as file:
         file.writelines(lines)
-        for hour, minute in schedule:
-            new_cron_command = f"{minute} {hour} * * * cd {os.path.dirname(script_path)} && python3 {script_path}\n"
-            file.write(new_cron_command)
+        for hour, minute in combined_schedule:
+            file.write(f"{minute} {hour} * * * cd {os.path.dirname(script_path)} && python3 {script_path}\n")
     
     os.system(f"crontab {cron_file}")
     os.remove(cron_file)
     
-    print(f"Scheduled {len(schedule)} runs for tomorrow:")
-    for hour, minute in schedule:
+    print(f"Scheduled {len(combined_schedule)} runs for today and tomorrow:")
+    for hour, minute in combined_schedule:
         print(f"- {hour:02d}:{minute:02d}")
         
     
