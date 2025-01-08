@@ -1,7 +1,13 @@
-Let's explore how artificial intelligence relates to problem #32 in software development: In general, the better a software engineer is able to communicate effectively with his or her teams, the more agile and motivated they become — while also being less dependent on the industry-specific environment they live in.
+Let's explore how software design relates to problem #34 in software development:
 
-To begin, I will focus on the following concepts first:
+Why use software design, especially when you could improve it?
 
-The relationship between programmers and the software engineers they work with is the fundamental difference between the two.
+The number one reason to use software design is, essentially:
 
-Most people with disabilities experience problems
+"software design is a necessary, or at best, a negative to achieving perfection"
+
+"you will see many programmers using software design to achieve only a mediocre job/model"
+
+"software development must begin, in a small group of professionals"
+
+The
