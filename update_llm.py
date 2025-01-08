@@ -78,10 +78,8 @@ def write_files(number, text):
         f.write(text)
 
 def git_commit():
-    subprocess.run(['git', 'add', 'number.txt', 'thought.txt'])
-    date = datetime.now().strftime('%Y-%m-%d')
-    commit_message = f"Update number and thought: {date}"
-    subprocess.run(['git', 'commit', '-m', commit_message])
+    os.system("git add .")
+    os.system('git commit -m "Auto-commit generated code"')
 
 # def initialize_files():
 #     if not os.path.exists('number.txt'):
@@ -93,12 +91,7 @@ def git_commit():
 #         subprocess.run(['git', 'commit', '-m', 'Initialize tracking'])
 
 def git_push():
-    result = subprocess.run(['git', 'push'], capture_output=True, text=True)
-    if result.returncode == 0:
-        print("Changes pushed to GitHub successfully.")
-    else:
-        print("Error pushing to GitHub:")
-        print(result.stderr)
+    os.system("git push origin main")
         
 def update_cron_with_random_time():
     script_dir = os.path.dirname(os.path.abspath(__file__))
