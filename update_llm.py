@@ -3,7 +3,6 @@ import random
 import subprocess
 from datetime import datetime
 from transformers import pipeline
-import datetime
 import random
 
 
@@ -23,7 +22,7 @@ class SimpleModel:
 if __name__ == "__main__":
     model = SimpleModel()
 """
-    filename = f"deep_learning_example_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.py"
+    filename = f"deep_learning_example_{datetime.now().strftime('%Y%m%d_%H%M%S')}.py"
     with open(filename, "w") as f:
         f.write(code_snippet)
     return filename
