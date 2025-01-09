@@ -22,6 +22,140 @@ class SimpleModel:
 if __name__ == "__main__":
     model = SimpleModel()
 """
+    torch_layers = ["Linear", "Conv2d", "LSTM", "Transformer", "GRU"]
+    layer = random.choice(torch_layers)
+
+    if chosen_topic == "CNN":
+        code_snippet += f"""
+import torch.nn as nn
+
+class CNN(nn.Module):
+    def __init__(self):
+        super(CNN, self).__init__()
+        self.conv1 = nn.Conv2d(1, 32, 3)
+        self.conv2 = nn.Conv2d(32, 64, 3)
+        self.fc1 = nn.Linear(64 * 12 * 12, 128)
+        self.fc2 = nn.Linear(128, 10)
+        
+    def forward(self, x):
+        x = torch.relu(self.conv1(x))
+        x = torch.relu(self.conv2(x))
+        x = x.view(-1, 64 * 12 * 12)
+        x = torch.relu(self.fc1(x))
+        return self.fc2(x)
+
+model = CNN()
+print(f"Model architecture:\\n{model}")"""
+
+    elif chosen_topic == "RNN":
+        code_snippet += """
+class RNN(nn.Module):
+    def __init__(self, input_size=10, hidden_size=20, output_size=10):
+        super(RNN, self).__init__()
+        self.hidden_size = hidden_size
+        self.rnn = nn.RNN(input_size, hidden_size, batch_first=True)
+        self.fc = nn.Linear(hidden_size, output_size)
+    
+    def forward(self, x):
+        h0 = torch.zeros(1, x.size(0), self.hidden_size)
+        out, _ = self.rnn(x, h0)
+        out = self.fc(out[:, -1, :])
+        return out
+
+model = RNN()
+print(f"RNN model created with {model.hidden_size} hidden units")"""
+
+    elif chosen_topic == "LSTM":
+        code_snippet += """
+class LSTM(nn.Module):
+    def __init__(self, input_size=10, hidden_size=20, num_layers=2):
+        super(LSTM, self).__init__()
+        self.lstm = nn.LSTM(input_size, hidden_size, num_layers, batch_first=True)
+        self.fc = nn.Linear(hidden_size, 1)
+    
+    def forward(self, x):
+        out, _ = self.lstm(x)
+        out = self.fc(out[:, -1, :])
+        return out
+
+model = LSTM()
+print("LSTM model initialized with 2 layers")"""
+
+    elif chosen_topic == "Transformer":
+        code_snippet += """
+class TransformerModel(nn.Module):
+    def __init__(self, ntoken=100, d_model=200, nhead=2, nhid=200):
+        super(TransformerModel, self).__init__()
+        self.transformer = nn.Transformer(d_model, nhead)
+        self.encoder = nn.Embedding(ntoken, d_model)
+        self.d_model = d_model
+        
+    def forward(self, src, tgt):
+        src = self.encoder(src) * math.sqrt(self.d_model)
+        tgt = self.encoder(tgt) * math.sqrt(self.d_model)
+        output = self.transformer(src, tgt)
+        return output
+
+model = TransformerModel()
+print("Transformer model created with 2 attention heads")"""
+
+    elif chosen_topic == "GAN":
+        code_snippet += """
+class Generator(nn.Module):
+    def __init__(self, latent_dim):
+        super(Generator, self).__init__()
+        self.model = nn.Sequential(
+            nn.Linear(latent_dim, 128),
+            nn.ReLU(),
+            nn.Linear(128, 784),
+            nn.Tanh()
+        )
+    
+    def forward(self, z):
+        return self.model(z)
+
+class Discriminator(nn.Module):
+    def __init__(self):
+        super(Discriminator, self).__init__()
+        self.model = nn.Sequential(
+            nn.Linear(784, 128),
+            nn.ReLU(),
+            nn.Linear(128, 1),
+            nn.Sigmoid()
+        )
+    
+    def forward(self, x):
+        return self.model(x)
+
+generator = Generator(100)
+discriminator = Discriminator()
+print("GAN models initialized")"""
+
+    elif chosen_topic == "Autoencoder":
+        code_snippet += """
+class Autoencoder(nn.Module):
+    def __init__(self):
+        super(Autoencoder, self).__init__()
+        self.encoder = nn.Sequential(
+            nn.Linear(784, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.ReLU()
+        )
+        self.decoder = nn.Sequential(
+            nn.Linear(64, 128),
+            nn.ReLU(),
+            nn.Linear(128, 784),
+            nn.Sigmoid()
+        )
+    
+    def forward(self, x):
+        x = self.encoder(x)
+        x = self.decoder(x)
+        return x
+
+model = Autoencoder()
+print("Autoencoder architecture created")"""
     filename = f"deep_learning_example_{datetime.now().strftime('%Y%m%d_%H%M%S')}.py"
     with open(filename, "w") as f:
         f.write(code_snippet)
