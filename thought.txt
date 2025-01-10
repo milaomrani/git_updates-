@@ -1,1 +1,3 @@
-AI concept #40: Understanding data structures and its applications in the cloud as an Architectural Data Scientist. A few weeks ago, we explored how some of the simplest Data Structures (DBTs) can handle huge amount of complexity. By combining the basic concepts with the data structures of applications, I decided to use the framework to show how to build great Data Structures. For more information and to download the source code from the archive of all our articles, including an image of the file with a
+AI concept #41: Understanding software design and its applications in the field of software design. This paper tries to define a 'technomic layer' that might be relevant to a new kind of system (a human-machine hybrid): a 'brain control system' or 'brain-control system without hardware.' Our aim is to gain an insight into the mind's state-of-the-art in software design with reference to the field of computer science (Bristol, 1989).
+
+Acknowled
