@@ -309,6 +309,35 @@ def update_cron_with_random_times():
     for hour, minute in combined_schedule:
         print(f"- {hour:02d}:{minute:02d}")
         
+        
+def create_conda_script():
+    conda_script = """#!/bin/bash
+source /Users/miladomrani/opt/anaconda3/etc/profile.d/conda.sh
+conda activate AG
+cd /Users/miladomrani/Documents/code/git_increament/git_updates-
+python update_llm.py
+"""
+    with open('conda.sh', 'w') as f:
+        f.write(conda_script)
+    os.chmod('conda.sh', 0o755)
+
+def create_run_script():
+    run_script = """#!/bin/bash
+/Users/miladomrani/Documents/code/git_increament/git_updates-/conda.sh
+"""
+    with open('run_update.sh', 'w') as f:
+        f.write(run_script)
+    os.chmod('run_update.sh', 0o755)
+
+def setup_cron():
+    script_path = os.path.abspath('run_update.sh')
+    os.system(f'(crontab -l 2>/dev/null; echo "0 * * * * {script_path}") | crontab -')
+
+def setup_automation():
+    create_conda_script()
+    create_run_script()
+    setup_cron()
+    print("Automation setup complete")
     
 
 def main():
@@ -332,4 +361,5 @@ def main():
 
 # ...existing code...
 if __name__ == "__main__":
+    setup_automation()
     main()
