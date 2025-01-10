@@ -1,3 +1,3 @@
-Let's explore how artificial intelligence relates to problem #38 in software development: I've talked about both a human-machine-simulation approach and artificial intelligence (AI). I'll get to my understanding of each later in this essay. But one key takeaway from these two different approaches is that we want to create a way to evaluate AI problems without creating an artificial language.
+Here's a coding challenge #39: Implement a deep learning solution that works with a single machine learning algorithm. With the most recent release, it will become easy and time-consuming to create any machine learning solution for every task. There are already some good examples.
 
-A solution to a problem involves finding the right software solution. There are many ways to solve a specific problem. But,
+What's going on here? I really don't know and I did some research on this and it's good to mention that with this approach in mind, we should have a better understanding of how a machine learning algorithm can help
