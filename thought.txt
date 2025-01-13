@@ -1,3 +1,5 @@
-AI concept #41: Understanding software design and its applications in the field of software design. This paper tries to define a 'technomic layer' that might be relevant to a new kind of system (a human-machine hybrid): a 'brain control system' or 'brain-control system without hardware.' Our aim is to gain an insight into the mind's state-of-the-art in software design with reference to the field of computer science (Bristol, 1989).
+Here's a coding challenge #42: Implement a machine learning solution that allows you to quickly solve more abstract problems without needing to rely on the "learning" algorithm. This code is written with a few tricks and features to help you make it work.
 
-Acknowled
+The first section covers the following three steps:
+
+Pick your initial algorithm (if applicable) and then assign one more feature. Select a task for which the default AI could run, and then set a condition. See the "Model-
