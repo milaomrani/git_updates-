@@ -1,5 +1,5 @@
-Here's a coding challenge #42: Implement a machine learning solution that allows you to quickly solve more abstract problems without needing to rely on the "learning" algorithm. This code is written with a few tricks and features to help you make it work.
+AI concept #43: Understanding deep learning and its applications in business software. This talk takes part in the Advanced Advanced Systems and Complexity course.
 
-The first section covers the following three steps:
+If you are interested in learning more about Deep Learning and its applications as a framework and practice, you can also follow me on @jb_beth at @jb_bart on Twitter. I will be answering your questions, feedback and ideas for future projects.
 
-Pick your initial algorithm (if applicable) and then assign one more feature. Select a task for which the default AI could run, and then set a condition. See the "Model-
+For more details about Deep Learning and its application and what it entails

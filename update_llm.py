@@ -361,5 +361,17 @@ def main():
 
 # ...existing code...
 if __name__ == "__main__":
+    num_daily_runs = 10  # Set fixed number of runs per day
     setup_automation()
+    
+    # Generate schedule for today and tomorrow with exactly 10 runs per day
+    schedule_today = generate_daily_schedule()
+    # Ensure exactly 10 runs by adjusting generate_daily_schedule() parameters
+    while len(schedule_today) > num_daily_runs:
+        schedule_today.pop()
+    while len(schedule_today) < num_daily_runs:
+        schedule_today.append((random.randint(9, 16), random.randint(0, 59)))
+    
+    # Update cron with new schedule
+    update_cron_with_random_times()
     main()
