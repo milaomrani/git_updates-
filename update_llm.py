@@ -365,12 +365,22 @@ if __name__ == "__main__":
     setup_automation()
     
     # Generate schedule for today and tomorrow with exactly 10 runs per day
-    schedule_today = generate_daily_schedule()
-    # Ensure exactly 10 runs by adjusting generate_daily_schedule() parameters
-    while len(schedule_today) > num_daily_runs:
-        schedule_today.pop()
+    schedule_today = []
+    business_hours = list(range(9, 17))  # 9 AM to 5 PM
+    
+    # Ensure 2-hour gaps between runs
+    last_hour = None
     while len(schedule_today) < num_daily_runs:
-        schedule_today.append((random.randint(9, 16), random.randint(0, 59)))
+        hour = random.choice(business_hours)
+        # Check if there's at least 2 hours gap from the last run
+        if last_hour is None or abs(hour - last_hour) >= 2:
+            schedule_today.append((hour, random.randint(0, 59)))
+            last_hour = hour
+            # Remove nearby hours to maintain 2-hour gap
+            business_hours = [h for h in business_hours if abs(h - hour) >= 2]
+    
+    # Sort the schedule by time
+    schedule_today.sort()
     
     # Update cron with new schedule
     update_cron_with_random_times()
