@@ -1,5 +1,3 @@
-Let's explore how artificial intelligence relates to problem #44 in software development:
+AI concept #45: Understanding software design and its applications in the digital sphere
 
-In software development, you will need to develop a language, and then implement the design. You need to think about how this new language will use its own features and its own techniques and techniques to write, read, write and publish the code. How this language will use its own syntax is the first step.
-
-And as we move deeper into language development, what do we get from there? An AI could
+Machine Learning (MLL) and Machine Learning (ML) are great research areas which I have worked on for quite some time and are well worth exploring. There is a certain amount of misunderstanding regarding MLL and ML; how it allows user to make smarter decisions, manage applications, and understand the way they implement it. However, in the real world, MLL should be completely applied to anything that involves human interaction

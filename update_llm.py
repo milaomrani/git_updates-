@@ -388,17 +388,19 @@ def main():
         exit(1)
 
 # ...existing code...
-def schedule_daily_runs(NUM_DAILY_RUNS):
+def schedule_daily_runs(NUM_DAILY_RUNS=10):
     schedule_today = []
     LAST_HOUR = None
     
     while len(schedule_today) < NUM_DAILY_RUNS:
         business_hours = list(range(9, 17))  # Reset business hours
         if LAST_HOUR is not None:
-            business_hours = [h for h in business_hours if abs(h - LAST_HOUR) >= 2]
+            # Ensure DELAY hours between runs (1-2 hours)
+            delay = random.randint(1, 2)
+            business_hours = [h for h in business_hours if h > LAST_HOUR + delay]
         
         if not business_hours:
-            continue
+            break
             
         hour = random.choice(business_hours)
         schedule_today.append((hour, random.randint(0, 59)))
