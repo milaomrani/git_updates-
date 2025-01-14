@@ -1,3 +1,11 @@
-AI concept #45: Understanding software design and its applications in the digital sphere
+AI concept #46: Understanding algorithms and its applications in the field of computer science. He also served as a co-author of several papers on the topic of machine learning.
 
-Machine Learning (MLL) and Machine Learning (ML) are great research areas which I have worked on for quite some time and are well worth exploring. There is a certain amount of misunderstanding regarding MLL and ML; how it allows user to make smarter decisions, manage applications, and understand the way they implement it. However, in the real world, MLL should be completely applied to anything that involves human interaction
+Machine Learning for AI & AI-Learning Systems: Introduction to Machine Learning Models (University of Waterloo, 2016)
+
+Machine Learning and Applications in a Networked Environment
+
+Machine Learning in a Multisystem Environment
+
+Machine Learning in Networked Platforms
+
+Machine Learning in Networks: Applications to AI
