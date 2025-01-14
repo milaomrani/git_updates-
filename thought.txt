@@ -1,5 +1,5 @@
-AI concept #43: Understanding deep learning and its applications in business software. This talk takes part in the Advanced Advanced Systems and Complexity course.
+Let's explore how artificial intelligence relates to problem #44 in software development:
 
-If you are interested in learning more about Deep Learning and its applications as a framework and practice, you can also follow me on @jb_beth at @jb_bart on Twitter. I will be answering your questions, feedback and ideas for future projects.
+In software development, you will need to develop a language, and then implement the design. You need to think about how this new language will use its own features and its own techniques and techniques to write, read, write and publish the code. How this language will use its own syntax is the first step.
 
-For more details about Deep Learning and its application and what it entails
+And as we move deeper into language development, what do we get from there? An AI could

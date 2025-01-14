@@ -156,6 +156,69 @@ class Autoencoder(nn.Module):
 
 model = Autoencoder()
 print("Autoencoder architecture created")"""
+    # Additional advanced topics and their implementations
+    topics.extend(["Image Segmentation", "Object Detection", "Time Series Forecasting", 
+                  "Attention Mechanism", "VAE", "Self-Supervised Learning"])
+    
+    if chosen_topic == "Image Segmentation":
+        code_snippet += """
+class UNet(nn.Module):
+    def __init__(self, in_channels=3, out_channels=1):
+        super(UNet, self).__init__()
+        self.enc1 = nn.Conv2d(in_channels, 64, 3, padding=1)
+        self.enc2 = nn.Conv2d(64, 128, 3, padding=1)
+        self.dec1 = nn.ConvTranspose2d(128, 64, 2, stride=2)
+        self.dec2 = nn.Conv2d(64, out_channels, 1)
+        
+    def forward(self, x):
+        x1 = torch.relu(self.enc1(x))
+        x2 = torch.relu(self.enc2(x1))
+        x3 = self.dec1(x2)
+        return torch.sigmoid(self.dec2(x3))
+
+model = UNet()
+print("U-Net architecture for image segmentation created")"""
+
+    elif chosen_topic == "Time Series Forecasting":
+        code_snippet += """
+class TimeSeriesTransformer(nn.Module):
+    def __init__(self, input_dim=1, hidden_dim=64, num_heads=4):
+        super(TimeSeriesTransformer, self).__init__()
+        self.encoder = nn.TransformerEncoder(
+            nn.TransformerEncoderLayer(d_model=hidden_dim, nhead=num_heads),
+            num_layers=2
+        )
+        self.embedding = nn.Linear(input_dim, hidden_dim)
+        self.predictor = nn.Linear(hidden_dim, input_dim)
+        
+    def forward(self, x):
+        x = self.embedding(x)
+        x = self.encoder(x)
+        return self.predictor(x)
+
+model = TimeSeriesTransformer()
+print("Transformer model for time series forecasting initialized")"""
+
+    elif chosen_topic == "Attention Mechanism":
+        code_snippet += """
+class AttentionLayer(nn.Module):
+    def __init__(self, hidden_size=128):
+        super(AttentionLayer, self).__init__()
+        self.attention = nn.MultiheadAttention(hidden_size, num_heads=8)
+        self.norm = nn.LayerNorm(hidden_size)
+        self.mlp = nn.Sequential(
+            nn.Linear(hidden_size, hidden_size * 4),
+            nn.GELU(),
+            nn.Linear(hidden_size * 4, hidden_size)
+        )
+        
+    def forward(self, x):
+        attn_out, _ = self.attention(x, x, x)
+        x = self.norm(x + attn_out)
+        return self.norm(x + self.mlp(x))
+
+model = AttentionLayer()
+print("Multi-head attention layer with MLP created")"""
     filename = f"deep_learning_example_{datetime.now().strftime('%Y%m%d_%H%M%S')}.py"
     with open(filename, "w") as f:
         f.write(code_snippet)
@@ -175,12 +238,6 @@ def initialize_files():
         subprocess.run(['git', 'add', 'number.txt', 'thought.txt'])
         subprocess.run(['git', 'commit', '-m', 'Initialize tracking'])
 
-
-# def generate_text(number):
-#     generator = pipeline('text-generation', model='gpt2')
-#     prompt = f"Today's number is {number}. This makes me think about:"
-#     result = generator(prompt, max_length=100, num_return_sequences=1)
-#     return result[0]['generated_text']
 
 def generate_text(number):
     generator = pipeline('text-generation', model='gpt2')
@@ -215,15 +272,6 @@ def git_commit():
     os.system("git add .")
     os.system('git commit -m "Auto-commit generated code"')
 
-# def initialize_files():
-#     if not os.path.exists('number.txt'):
-#         with open('number.txt', 'w') as f:
-#             f.write('0')
-#         with open('thought.txt', 'w') as f:
-#             f.write('Initial thought')
-#         subprocess.run(['git', 'add', 'number.txt', 'thought.txt'])
-#         subprocess.run(['git', 'commit', '-m', 'Initialize tracking'])
-
 def git_push():
     os.system("git push origin main")
         
@@ -244,71 +292,51 @@ def update_cron_with_random_time():
         file.write(new_cron_command)
     os.system(f"crontab {cron_file}")
 
-def generate_daily_schedule():
-    num_runs = random.randint(5, 15)  # 5-15 runs per day
+def generate_daily_schedule(num_daily_runs=10):
     schedule = []
     
-    # Get current hour and minute
-    now = datetime.now()
-    current_minutes = now.hour * 60 + now.minute
+    # 9 AM to 5 PM
+    initial_hours = list(range(9, 17))
     
-    # Business hours in minutes (9 AM to 5 PM)
-    start_minutes = 9 * 60
-    end_minutes = 17 * 60
-    window = end_minutes - start_minutes
+    for _ in range(num_daily_runs):
+        # Reset available hours if needed
+        if not initial_hours:
+            initial_hours = list(range(9, 17))
+            
+        if initial_hours:
+            hour = random.choice(initial_hours)
+            minute = random.randint(0, 59)
+            schedule.append((hour, minute))
+            
+            # Remove selected hour and adjacent hours
+            initial_hours = [h for h in initial_hours 
+                           if abs(h - hour) >= 2]
     
-    # Adjust start time if current time is within business hours
-    if current_minutes > start_minutes and current_minutes < end_minutes:
-        start_minutes = current_minutes
-    
-    # Calculate remaining time window
-    remaining_window = end_minutes - start_minutes
-    if remaining_window <= 0:
-        return []  # Return empty schedule if no time left today
-        
-    # Calculate intervals for remaining time
-    intervals = remaining_window // num_runs
-    
-    for i in range(num_runs):
-        # Base time plus random offset within interval
-        base_time = start_minutes + (i * intervals)
-        random_offset = random.randint(0, min(intervals-1, end_minutes-base_time))
-        time_minutes = min(base_time + random_offset, end_minutes)
-        
-        hour = time_minutes // 60
-        minute = time_minutes % 60
-        schedule.append((hour, minute))
-    
-    return sorted(schedule)
+    # Sort by time
+    schedule.sort()
+    return schedule
 
 def update_cron_with_random_times():
-    # Generate times for today
-    schedule_today = generate_daily_schedule()  # Adjust function to limit times to remaining hours today
-    
-    # Generate times for tomorrow
-    schedule_tomorrow = generate_daily_schedule()  # Existing logic for an entire day
-    
-    combined_schedule = schedule_today + schedule_tomorrow
-    
-    cron_file = "/tmp/crontab.tmp"
-    script_path = os.path.abspath(__file__)
-    
-    os.system(f"crontab -l > {cron_file}")
-    with open(cron_file, "r") as file:
-        lines = [l for l in file.readlines() if "update_llm.py" not in l]
-    
-    with open(cron_file, "w") as file:
-        file.writelines(lines)
-        for hour, minute in combined_schedule:
-            file.write(f"{minute} {hour} * * * cd {os.path.dirname(script_path)} && python3 {script_path}\n")
-    
-    os.system(f"crontab {cron_file}")
-    os.remove(cron_file)
-    
-    print(f"Scheduled {len(combined_schedule)} runs for today and tomorrow:")
-    for hour, minute in combined_schedule:
-        print(f"- {hour:02d}:{minute:02d}")
+    try:
+        schedule = generate_daily_schedule()
+        cron_file = "/tmp/crontab.tmp"
+        script_path = os.path.abspath(__file__)
         
+        # Update crontab
+        os.system(f"crontab -l > {cron_file}")
+        with open(cron_file, "w") as file:
+            for hour, minute in schedule:
+                file.write(f"{minute} {hour} * * * cd {os.path.dirname(script_path)} && python3 {script_path}\n")
+        
+        os.system(f"crontab {cron_file}")
+        os.remove(cron_file)
+        
+        print(f"Updated schedule with {len(schedule)} runs")
+        for hour, minute in schedule:
+            print(f"- {hour:02d}:{minute:02d}")
+            
+    except Exception as e:
+        print(f"Error updating cron: {str(e)}")
         
 def create_conda_script():
     conda_script = """#!/bin/bash
@@ -360,24 +388,30 @@ def main():
         exit(1)
 
 # ...existing code...
+def schedule_daily_runs(NUM_DAILY_RUNS):
+    schedule_today = []
+    LAST_HOUR = None
+    
+    while len(schedule_today) < NUM_DAILY_RUNS:
+        business_hours = list(range(9, 17))  # Reset business hours
+        if LAST_HOUR is not None:
+            business_hours = [h for h in business_hours if abs(h - LAST_HOUR) >= 2]
+        
+        if not business_hours:
+            continue
+            
+        hour = random.choice(business_hours)
+        schedule_today.append((hour, random.randint(0, 59)))
+        LAST_HOUR = hour
+    
+    return schedule_today
+
 if __name__ == "__main__":
     num_daily_runs = 10  # Set fixed number of runs per day
     setup_automation()
     
     # Generate schedule for today and tomorrow with exactly 10 runs per day
-    schedule_today = []
-    business_hours = list(range(9, 17))  # 9 AM to 5 PM
-    
-    # Ensure 2-hour gaps between runs
-    last_hour = None
-    while len(schedule_today) < num_daily_runs:
-        hour = random.choice(business_hours)
-        # Check if there's at least 2 hours gap from the last run
-        if last_hour is None or abs(hour - last_hour) >= 2:
-            schedule_today.append((hour, random.randint(0, 59)))
-            last_hour = hour
-            # Remove nearby hours to maintain 2-hour gap
-            business_hours = [h for h in business_hours if abs(h - hour) >= 2]
+    schedule_today = schedule_daily_runs(num_daily_runs)
     
     # Sort the schedule by time
     schedule_today.sort()
