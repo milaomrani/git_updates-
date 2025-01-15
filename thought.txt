@@ -1,3 +1,3 @@
-AI concept #47: Understanding data structures and its applications in computer vision
+Here's a coding challenge #48: Implement a artificial intelligence solution that can find everything there is in between a regular Python script and a good C-level C library. It can even do all those things for you - but only a subset of them will work and you'll still have to get the right ones. If your language can produce a good C library for this job, chances are it can.
 
-Abstract: The understanding of data structures is an important question in understanding the evolution of computer vision. This paper addresses some of these issues by asking a fundamental question-do they have any application in computing? In this work we propose to show that computer vision is uniquely possible because the computational capabilities of the computer-generated image are truly beyond what any general application would require. This provides a framework to demonstrate computational capabilities of the computer
+Now, in a nutshell: a python script that finds nothing here but data from another
