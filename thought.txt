@@ -1,11 +1,3 @@
-AI concept #46: Understanding algorithms and its applications in the field of computer science. He also served as a co-author of several papers on the topic of machine learning.
+AI concept #47: Understanding data structures and its applications in computer vision
 
-Machine Learning for AI & AI-Learning Systems: Introduction to Machine Learning Models (University of Waterloo, 2016)
-
-Machine Learning and Applications in a Networked Environment
-
-Machine Learning in a Multisystem Environment
-
-Machine Learning in Networked Platforms
-
-Machine Learning in Networks: Applications to AI
+Abstract: The understanding of data structures is an important question in understanding the evolution of computer vision. This paper addresses some of these issues by asking a fundamental question-do they have any application in computing? In this work we propose to show that computer vision is uniquely possible because the computational capabilities of the computer-generated image are truly beyond what any general application would require. This provides a framework to demonstrate computational capabilities of the computer
